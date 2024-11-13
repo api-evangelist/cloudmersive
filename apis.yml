@@ -1,0 +1,33 @@
+aid: cloudmersive
+name: Cloudmersive
+description: >-
+  Use our advanced Deep Learning APIs to automatically identify and extract the
+  text from an image. Examples include locating documents and receipts in
+  photos, ...
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API
+created: '2024-11-13'
+modified: '2024-11-13'
+url: >-
+  https://raw.githubusercontent.com/api-search/cloudmersive/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: cloudmersive:cloudmersive
+    name: Cloudmersive
+    description: >-
+      Use our advanced Deep Learning APIs to automatically identify and extract
+      the text from an image. Examples include locating documents and receipts
+      in photos, ...
+    humanURL: https://cloudmersive.com/image-recognition-and-processing-api
+    tags:
+      - API
+    properties:
+      - type: Documentation
+        url: https://cloudmersive.com/image-recognition-and-processing-api
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com

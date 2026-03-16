@@ -1,19 +1,6 @@
 aid: cloudmersive
 url: >-
-  https://raw.githubusercontent.com/api-search/cloudmersive/refs/heads/main/apis.yml
-apis:
-  - aid: cloudmersive:cloudmersive
-    name: Cloudmersive
-    tags:
-      - API
-    humanURL: https://cloudmersive.com/image-recognition-and-processing-api
-    properties:
-      - url: https://cloudmersive.com/image-recognition-and-processing-api
-        type: Documentation
-    description: >-
-      Use our advanced Deep Learning APIs to automatically identify and extract
-      the text from an image. Examples include locating documents and receipts
-      in photos, ...
+  https://raw.githubusercontent.com/api-evangelist/cloudmersive/refs/heads/main/apis.yml
 name: Cloudmersive
 tags:
   - Virus Scanning
@@ -22,20 +9,39 @@ tags:
   - Processing
   - OCR
   - Natural Language
-type: Contract
+type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-13'
-modified: '2024-12-22'
-position: Consuming
+modified: '2026-03-16'
+position: Consumer
 description: >-
   Cloudmersive brings its customers a complete portfolio of APIs across Virus
   Scanning, Document Conversion and Processing, Deep Learning OCR, Image
   Recognition and Processing, Natural Language Processing, Barcode Processing
-  and any other key areas. Core to our value is that our customers can take
-  advantage of all of these APIs with one plan and pricing model, and get
-  end-to-end support and services.
+  and other key areas.
+apis:
+  - aid: cloudmersive:cloudmersive
+    name: Cloudmersive API
+    tags:
+      - Documents
+      - OCR
+      - Processing
+    humanURL: https://cloudmersive.com/image-recognition-and-processing-api
+    properties:
+      - url: https://cloudmersive.com/image-recognition-and-processing-api
+        type: Documentation
+    description: >-
+      Cloudmersive provides a complete portfolio of APIs for document
+      processing, OCR, image recognition, and virus scanning.
+common:
+  - type: Website
+    url: https://cloudmersive.com/
+  - type: Portal
+    url: https://cloudmersive.com/developer
+  - type: Privacy Policy
+    url: https://cloudmersive.com/privacy-policy
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'

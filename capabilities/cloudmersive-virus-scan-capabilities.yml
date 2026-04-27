@@ -1,0 +1,92 @@
+# Naftiko capabilities profile for the Cloudmersive Virus Scan API.
+# Capabilities are derived from the Swagger 2.0 spec at
+# https://api-console.cloudmersive.com/swagger/api/virus and the local
+# copy at openapi/cloudmersive-virus-scan-openapi.json.
+provider: cloudmersive
+name: Cloudmersive Virus Scan API
+description: >-
+  Cloud-based file, content, website, and cloud-storage virus and malware
+  scanning service exposing both basic and advanced (multi-engine) scan
+  modes.
+capabilities:
+  - id: cloudmersive.virus.scan.file
+    name: Scan a file for viruses
+    description: Scan an uploaded file for viruses, malware, and other content threats.
+    inputs:
+      - api-key
+      - input-file
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.file.advanced
+    name: Advanced scan a file for viruses
+    description: Multi-engine advanced scan with policy options for executables, macros, scripts, password-protected files, and unsafe archives.
+    inputs:
+      - api-key
+      - input-file
+      - policy-options
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.website
+    name: Scan a website
+    description: Scan a website URL for malicious content and threats.
+    inputs:
+      - api-key
+      - url
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.cloud-storage.azure-blob
+    name: Scan Azure Blob
+    description: Scan a single Azure Blob Storage object for viruses (basic or advanced).
+    inputs:
+      - api-key
+      - connection-string
+      - container-name
+      - blob-path
+      - mode
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.cloud-storage.aws-s3
+    name: Scan AWS S3 file
+    description: Scan a single AWS S3 object for viruses (basic or advanced).
+    inputs:
+      - api-key
+      - access-key
+      - secret-key
+      - bucket-region
+      - bucket-name
+      - key-name
+      - mode
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.cloud-storage.gcp
+    name: Scan GCP Storage file
+    description: Scan a single Google Cloud Storage object for viruses (basic or advanced).
+    inputs:
+      - api-key
+      - bucket-name
+      - object-name
+      - json-credential-file
+      - mode
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.cloud-storage.sharepoint
+    name: Scan SharePoint Online file
+    description: Scan a file in a SharePoint Online site drive for viruses (basic or advanced).
+    inputs:
+      - api-key
+      - client-id
+      - client-secret
+      - site-url
+      - tenant
+      - file-path
+      - mode
+    outputs:
+      - scan-result
+  - id: cloudmersive.virus.scan.cloud-storage.batch-job.status
+    name: Get cloud-storage batch scan job status
+    description: Retrieve the status and result of an asynchronous cloud-storage scan batch job.
+    inputs:
+      - api-key
+      - async-job-id
+    outputs:
+      - job-status

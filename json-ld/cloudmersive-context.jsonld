@@ -1,0 +1,65 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cm": "https://cloudmersive.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "VirusScanResult": {
+      "@id": "cm:VirusScanResult",
+      "@context": {
+        "cleanResult": "cm:cleanResult",
+        "foundViruses": "cm:foundViruses",
+        "containsExecutable": "cm:containsExecutable",
+        "containsMacros": "cm:containsMacros",
+        "containsScript": "cm:containsScript",
+        "verifiedFileFormat": "cm:verifiedFileFormat"
+      }
+    },
+
+    "Virus": {
+      "@id": "cm:Virus",
+      "@context": {
+        "fileName": "schema:name",
+        "virusName": "cm:virusName"
+      }
+    },
+
+    "ConvertedDocument": {
+      "@id": "cm:ConvertedDocument",
+      "@context": {
+        "successful": "cm:successful",
+        "outputContent": "cm:outputContent",
+        "outputContentType": "schema:encodingFormat"
+      }
+    },
+
+    "OcrResult": {
+      "@id": "cm:OcrResult",
+      "@context": {
+        "successful": "cm:successful",
+        "textResult": "schema:text",
+        "meanConfidenceLevel": "cm:meanConfidenceLevel"
+      }
+    },
+
+    "ImageRecognitionResult": {
+      "@id": "cm:ImageRecognitionResult",
+      "@context": {
+        "successful": "cm:successful",
+        "objects": "cm:objects",
+        "labels": "cm:labels"
+      }
+    },
+
+    "ValidationResult": {
+      "@id": "cm:ValidationResult",
+      "@context": {
+        "valid": "cm:valid",
+        "input": "cm:input",
+        "messages": "schema:description"
+      }
+    }
+  }
+}

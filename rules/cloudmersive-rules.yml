@@ -1,0 +1,103 @@
+extends:
+  - spectral:oas
+
+# Spectral linting rules applicable to all Cloudmersive product OpenAPI/Swagger
+# specs (Virus Scan, Convert, OCR, Image, NLP, Validate, Security, Spam,
+# Phishing, CDR, Fraud, DLP, Speech, Video, Currency, Barcode, Config,
+# Data Integration).
+rules:
+  cloudmersive-info-title:
+    description: Each Cloudmersive product spec must declare a title.
+    severity: error
+    given: "$.info"
+    then:
+      field: title
+      function: truthy
+
+  cloudmersive-info-description:
+    description: Each Cloudmersive product spec must declare a description.
+    severity: warn
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  cloudmersive-host-or-server:
+    description: A host (Swagger 2) or server (OpenAPI 3) must be declared.
+    severity: error
+    given: "$"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["host"]
+            - required: ["servers"]
+
+  cloudmersive-https-only:
+    description: Cloudmersive APIs must be served over HTTPS.
+    severity: error
+    given: "$"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - properties:
+                schemes:
+                  type: array
+                  contains:
+                    const: "https"
+              required: ["schemes"]
+            - properties:
+                servers:
+                  type: array
+                  items:
+                    properties:
+                      url:
+                        type: string
+                        pattern: "^https://"
+              required: ["servers"]
+
+  cloudmersive-apikey-security:
+    description: An Apikey security definition/scheme must be declared.
+    severity: error
+    given: "$"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["securityDefinitions"]
+            - properties:
+                components:
+                  required: ["securitySchemes"]
+              required: ["components"]
+
+  cloudmersive-operation-id:
+    description: Every operation must declare a unique operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  cloudmersive-operation-tags:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+
+  cloudmersive-operation-summary:
+    description: Every operation must include a short summary.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy

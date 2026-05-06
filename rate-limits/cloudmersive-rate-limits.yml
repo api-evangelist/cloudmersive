@@ -4,175 +4,90 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Cloudmersive
 providerId: cloudmersive
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Barcodes
-  - Conversions
   - Documents
-  - Image Recognition
-  - Natural Language
+  - Conversions
   - OCR
-  - Processing
   - Validation
   - Virus Scanning
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Cloudmersive API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Cloudmersive enforces concurrency limits per API key (calls-per-second) and a monthly call
+  quota tied to the subscribed plan. Calls beyond the concurrency cap are queued for execution rather than
+  rejected with 429s. Higher throughput requires a larger plan or a single-tenant / on-premises deployment.
+sources:
+  - https://www.cloudmersive.com/pricing-small-business
 responseCodes:
+  quotaExceeded: 402
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
+  - name: Free Tier Concurrency
     scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Cloudmersive Virus Scan API
-      - Cloudmersive Security Threat Detection API
-      - Cloudmersive Spam Detection API
-      - Cloudmersive Phishing Detection API
-      - Cloudmersive Content Disarm and Reconstruction (CDR) API
-      - Cloudmersive Fraud Detection API
-      - Cloudmersive Data Loss Prevention (DLP) API
-      - Cloudmersive Document Convert API
-      - Cloudmersive Barcode API
-      - Cloudmersive Image Recognition and Processing API
-      - Cloudmersive Natural Language Processing API
-      - Cloudmersive OCR API
-      - Cloudmersive Speech API
-      - Cloudmersive Validate API
-      - Cloudmersive Video API
-      - Cloudmersive Currency API
-      - Cloudmersive Configuration API
-      - Cloudmersive Data Integration API
-  - tier: free
-    name: Free Tier Monthly Quota
+    metric: requests_per_second
+    limit: 1
+    timeFrame: second
+    notes: Free plan caps simultaneous calls to 1 per second; excess calls queue.
+  - name: Basic / Business Concurrency
+    scope: api-key
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    notes: Basic ($19.99/mo) and Business ($49.99/mo) plans share the 2 calls/second concurrency ceiling.
+  - name: Business Premier Concurrency
+    scope: api-key
+    metric: requests_per_second
+    limit: 3
+    timeFrame: second
+  - name: Business Advantage Concurrency
+    scope: api-key
+    metric: requests_per_second
+    limit: 4
+    timeFrame: second
+  - name: Free Monthly Quota
     scope: api-key
     metric: requests_per_month
-    limit: 1000
+    limit: 600
     timeFrame: month
-    applies:
-      - Cloudmersive Virus Scan API
-      - Cloudmersive Security Threat Detection API
-      - Cloudmersive Spam Detection API
-      - Cloudmersive Phishing Detection API
-      - Cloudmersive Content Disarm and Reconstruction (CDR) API
-      - Cloudmersive Fraud Detection API
-      - Cloudmersive Data Loss Prevention (DLP) API
-      - Cloudmersive Document Convert API
-      - Cloudmersive Barcode API
-      - Cloudmersive Image Recognition and Processing API
-      - Cloudmersive Natural Language Processing API
-      - Cloudmersive OCR API
-      - Cloudmersive Speech API
-      - Cloudmersive Validate API
-      - Cloudmersive Video API
-      - Cloudmersive Currency API
-      - Cloudmersive Configuration API
-      - Cloudmersive Data Integration API
-  - tier: professional
-    name: Professional Tier Default
+  - name: Basic Monthly Quota
     scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Cloudmersive Virus Scan API
-      - Cloudmersive Security Threat Detection API
-      - Cloudmersive Spam Detection API
-      - Cloudmersive Phishing Detection API
-      - Cloudmersive Content Disarm and Reconstruction (CDR) API
-      - Cloudmersive Fraud Detection API
-      - Cloudmersive Data Loss Prevention (DLP) API
-      - Cloudmersive Document Convert API
-      - Cloudmersive Barcode API
-      - Cloudmersive Image Recognition and Processing API
-      - Cloudmersive Natural Language Processing API
-      - Cloudmersive OCR API
-      - Cloudmersive Speech API
-      - Cloudmersive Validate API
-      - Cloudmersive Video API
-      - Cloudmersive Currency API
-      - Cloudmersive Configuration API
-      - Cloudmersive Data Integration API
-  - tier: professional
-    name: Professional Tier Monthly Quota
+    metric: requests_per_month
+    limit: 10000
+    timeFrame: month
+  - name: Business Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 25000
+    timeFrame: month
+  - name: Business Premier Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 50000
+    timeFrame: month
+  - name: Business Advantage Monthly Quota
     scope: api-key
     metric: requests_per_month
     limit: 100000
     timeFrame: month
-    applies:
-      - Cloudmersive Virus Scan API
-      - Cloudmersive Security Threat Detection API
-      - Cloudmersive Spam Detection API
-      - Cloudmersive Phishing Detection API
-      - Cloudmersive Content Disarm and Reconstruction (CDR) API
-      - Cloudmersive Fraud Detection API
-      - Cloudmersive Data Loss Prevention (DLP) API
-      - Cloudmersive Document Convert API
-      - Cloudmersive Barcode API
-      - Cloudmersive Image Recognition and Processing API
-      - Cloudmersive Natural Language Processing API
-      - Cloudmersive OCR API
-      - Cloudmersive Speech API
-      - Cloudmersive Validate API
-      - Cloudmersive Video API
-      - Cloudmersive Currency API
-      - Cloudmersive Configuration API
-      - Cloudmersive Data Integration API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+  - name: Enterprise / Government Concurrency
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Cloudmersive Virus Scan API
-      - Cloudmersive Security Threat Detection API
-      - Cloudmersive Spam Detection API
-      - Cloudmersive Phishing Detection API
-      - Cloudmersive Content Disarm and Reconstruction (CDR) API
-      - Cloudmersive Fraud Detection API
-      - Cloudmersive Data Loss Prevention (DLP) API
-      - Cloudmersive Document Convert API
-      - Cloudmersive Barcode API
-      - Cloudmersive Image Recognition and Processing API
-      - Cloudmersive Natural Language Processing API
-      - Cloudmersive OCR API
-      - Cloudmersive Speech API
-      - Cloudmersive Validate API
-      - Cloudmersive Video API
-      - Cloudmersive Currency API
-      - Cloudmersive Configuration API
-      - Cloudmersive Data Integration API
+    metric: requests_per_second
+    limit: see vendor sales
+    notes: Single-tenant cloud, on-premises, and government deployments support negotiated throughput.
 policies:
+  - name: Queueing on Concurrency
+    description: Calls in excess of the per-second concurrency ceiling are queued for execution rather than
+      rejected immediately; sustained over-subscription results in degraded latency.
+  - name: Plan Quota Enforcement
+    description: Once the monthly call quota is exhausted the API key is blocked until the next billing
+      cycle or until the plan is upgraded.
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Clients should implement exponential backoff with jitter and respect any Retry-After header
+      returned with 429 responses.
+  - name: Single-tenant / On-premises
+    description: For higher concurrency or strict isolation, customers deploy single-tenant cloud or on-premises
+      stacks where limits are sized to the host hardware.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

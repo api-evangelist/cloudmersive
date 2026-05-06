@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -9,256 +10,77 @@ alignedWith:
 provider: Cloudmersive
 providerId: cloudmersive
 publisherName: Cloudmersive
-serviceCategory: API
+serviceCategory: 'Developer Tools / API'
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Barcodes
-  - Conversions
-  - Documents
-  - Image Recognition
-  - Natural Language
-  - OCR
-  - Processing
-  - Validation
-  - Virus Scanning
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Cloudmersive API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+  - Documents
+  - Conversions
+  - OCR
+  - Cost Management
+description: 'FOCUS-aligned FinOps for Cloudmersive: flat monthly subscription tiers (Basic through Business
+  Advantage) with included call quotas plus enterprise / on-premises options for committed throughput.'
+sources:
+  - https://www.cloudmersive.com/pricing
+  - https://www.cloudmersive.com/pricing-small-business
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Tiered Subscription
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
+    - Usage
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Cloudmersive
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: 'Developer Tools / API'
   ProviderName: Cloudmersive
   PublisherName: Cloudmersive
   InvoiceIssuerName: Cloudmersive
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PricingCategory: Tiered Subscription
+  PricingUnit: subscription-month
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: subscription_fee
+    description: Flat monthly subscription fee for the active plan tier.
+    unit: month
+    aggregation: sum
+    dimensions:
+      - plan
+  - name: api_calls
+    description: Count of API calls consumed against the plan's monthly allowance.
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - plan
+      - product
+      - api_key
+  - name: concurrency_peak
+    description: Peak concurrent requests per second observed against the API key.
+    unit: request
+    aggregation: max
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Cloudmersive Virus Scan API
-    baseURL: ''
-    tags:
-      - Antivirus
-      - Malware
-      - Security
-      - Virus Scanning
-    serviceName: Cloudmersive Virus Scan API
-    serviceCategory: API
-  - name: Cloudmersive Security Threat Detection API
-    baseURL: ''
-    tags:
-      - Security
-      - SQL Injection
-      - Threat Detection
-      - XSS
-    serviceName: Cloudmersive Security Threat Detection API
-    serviceCategory: API
-  - name: Cloudmersive Spam Detection API
-    baseURL: ''
-    tags:
-      - Email
-      - Spam
-    serviceName: Cloudmersive Spam Detection API
-    serviceCategory: API
-  - name: Cloudmersive Phishing Detection API
-    baseURL: ''
-    tags:
-      - Email Security
-      - Phishing
-    serviceName: Cloudmersive Phishing Detection API
-    serviceCategory: API
-  - name: Cloudmersive Content Disarm and Reconstruction (CDR) API
-    baseURL: ''
-    tags:
-      - CDR
-      - Document Sanitization
-      - Security
-    serviceName: Cloudmersive Content Disarm and Reconstruction (CDR) API
-    serviceCategory: API
-  - name: Cloudmersive Fraud Detection API
-    baseURL: ''
-    tags:
-      - Fraud Detection
-      - Risk
-    serviceName: Cloudmersive Fraud Detection API
-    serviceCategory: API
-  - name: Cloudmersive Data Loss Prevention (DLP) API
-    baseURL: ''
-    tags:
-      - Compliance
-      - DLP
-      - PII
-    serviceName: Cloudmersive Data Loss Prevention (DLP) API
-    serviceCategory: API
-  - name: Cloudmersive Document Convert API
-    baseURL: ''
-    tags:
-      - Conversion
-      - Documents
-      - File Formats
-    serviceName: Cloudmersive Document Convert API
-    serviceCategory: API
-  - name: Cloudmersive Barcode API
-    baseURL: ''
-    tags:
-      - Barcode
-      - QR Code
-    serviceName: Cloudmersive Barcode API
-    serviceCategory: API
-  - name: Cloudmersive Image Recognition and Processing API
-    baseURL: ''
-    tags:
-      - Computer Vision
-      - Image Processing
-      - Image Recognition
-    serviceName: Cloudmersive Image Recognition and Processing API
-    serviceCategory: API
-  - name: Cloudmersive Natural Language Processing API
-    baseURL: ''
-    tags:
-      - NLP
-      - Sentiment Analysis
-      - Translation
-    serviceName: Cloudmersive Natural Language Processing API
-    serviceCategory: API
-  - name: Cloudmersive OCR API
-    baseURL: ''
-    tags:
-      - Documents
-      - OCR
-    serviceName: Cloudmersive OCR API
-    serviceCategory: API
-  - name: Cloudmersive Speech API
-    baseURL: ''
-    tags:
-      - Speech
-      - Speech Recognition
-      - Text to Speech
-    serviceName: Cloudmersive Speech API
-    serviceCategory: API
-  - name: Cloudmersive Validate API
-    baseURL: ''
-    tags:
-      - Email
-      - Validation
-    serviceName: Cloudmersive Validate API
-    serviceCategory: API
-  - name: Cloudmersive Video API
-    baseURL: ''
-    tags:
-      - Conversion
-      - Video
-    serviceName: Cloudmersive Video API
-    serviceCategory: API
-  - name: Cloudmersive Currency API
-    baseURL: ''
-    tags:
-      - Currency
-      - Exchange Rate
-    serviceName: Cloudmersive Currency API
-    serviceCategory: API
-  - name: Cloudmersive Configuration API
-    baseURL: ''
-    tags:
-      - Configuration
-      - Feature Flags
-    serviceName: Cloudmersive Configuration API
-    serviceCategory: API
-  - name: Cloudmersive Data Integration API
-    baseURL: ''
-    tags:
-      - Data Integration
-      - ETL
-    serviceName: Cloudmersive Data Integration API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - plan
+      - api_key
+principles:
+  - name: Visibility
+    description: Monitor monthly call counts via the Cloudmersive customer portal; alert before exhausting
+      the plan quota since calls in excess queue rather than fail fast.
+  - name: Allocation
+    description: Issue separate API keys per environment and per consuming application so call counts can
+      be attributed to a team or product.
+  - name: Optimization
+    description: Right-size the plan against observed monthly volume and concurrency. For sustained traffic
+      above 4 calls/second, evaluate single-tenant cloud or on-premises deployment instead of stacking small-business
+      plans.
+  - name: Accountability
+    description: Tie subscription renewals to the engineering team consuming the API; review quota burn-down
+      mid-cycle and escalate to a higher tier before the queue depth materially impacts SLAs.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

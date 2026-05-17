@@ -18,7 +18,7 @@ access: 3rd-Party
 created: '2024-11-13'
 modified: '2026-04-26'
 position: Consumer
-x-type: company
+kind: company
 x-company: Cloudmersive
 description: >-
   Cloudmersive provides a portfolio of utility APIs covering virus and
@@ -280,9 +280,9 @@ common:
     url: https://api-console.cloudmersive.com/swagger/index.html
   - type: OpenAPI Index
     url: https://api.cloudmersive.com/openapi.asp
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://cloudmersive.com/privacy-policy
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/cloudmersive-context.jsonld
   - type: Spectral
     url: rules/cloudmersive-rules.yml

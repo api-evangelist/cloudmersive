@@ -1,0 +1,257 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: virusapi — Scan
+  description: 'virusapi — Scan. 3 operations. Lead operation: Scan a file for viruses. Self-contained Naftiko capability
+    covering one Cloudmersive business surface.'
+  tags:
+  - Cloudmersive
+  - Scan
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDMERSIVE_API_KEY: CLOUDMERSIVE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: virus-scan-scan
+    baseUri: https://localhost
+    description: virusapi — Scan business capability. Self-contained, no shared references.
+    resources:
+    - name: virus-scan-file
+      path: /virus/scan/file
+      operations:
+      - name: scanfile
+        method: POST
+        description: Scan a file for viruses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inputFile
+          in: formData
+          type: file
+          description: Input file to perform the operation on.
+          required: true
+    - name: virus-scan-file-advanced
+      path: /virus/scan/file/advanced
+      operations:
+      - name: scanfileadvanced
+        method: POST
+        description: Advanced Scan a file for viruses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inputFile
+          in: formData
+          type: file
+          description: Input file to perform the operation on.
+          required: true
+        - name: fileName
+          in: header
+          type: string
+          description: 'Optional: specify the original file name of the file being scanned.  By default the file name is taken
+            from inputFile parameter, but if this is not provided, or'
+        - name: allowExecutables
+          in: header
+          type: boolean
+          description: Set to false to block executable files (program code) from being allowed in the input file.  Default
+            is false (recommended).
+        - name: allowInvalidFiles
+          in: header
+          type: boolean
+          description: Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word
+            Document that is not a valid Word Document.  Default is f
+        - name: allowScripts
+          in: header
+          type: boolean
+          description: Set to false to block script files, such as a PHP files, Python scripts, BAT scripts, JS scripts, and
+            other malicious content or security threats that can be em
+        - name: allowPasswordProtectedFiles
+          in: header
+          type: boolean
+          description: Set to false to block password protected and encrypted files, such as encrypted zip and rar files,
+            and other files that seek to circumvent scanning through pass
+        - name: allowMacros
+          in: header
+          type: boolean
+          description: Set to false to block macros and other threats embedded in document files, such as Word, Excel and
+            PowerPoint embedded Macros (including support for .DOCX, .XLS
+        - name: allowXmlExternalEntities
+          in: header
+          type: boolean
+          description: Set to false to block XML External Entities and other threats embedded in XML files, and other files
+            that contain embedded content threats.  Set to true to allo
+        - name: allowInsecureDeserialization
+          in: header
+          type: boolean
+          description: Set to false to block Insecure Deserialization and other threats embedded in JSON and other object
+            serialization files, and other files that contain embedded co
+        - name: allowHtml
+          in: header
+          type: boolean
+          description: Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses
+            and other threats.  Set to true to allow these file t
+        - name: allowUnsafeArchives
+          in: header
+          type: boolean
+          description: 'Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe
+            extraction outcomes.  Default is false (recommended).  If set '
+        - name: allowOleEmbeddedObject
+          in: header
+          type: boolean
+          description: Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default
+            is false (recommended).  If set to true, OLE embedde
+        - name: allowUnwantedAction
+          in: header
+          type: boolean
+          description: Set to false to block unwanted or undesired actions, which can contain execute or open links or content
+            when the file is viewed.  Default is false (recommended)
+        - name: options
+          in: header
+          type: string
+          description: Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript
+            and HTML in PDF files.  Include permitJavascriptInHt
+        - name: restrictFileTypes
+          in: header
+          type: string
+          description: Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats,
+            such as .pdf,.docx,.png would allow only PDF, PNG and Word
+    - name: virus-scan-website
+      path: /virus/scan/website
+      operations:
+      - name: scanwebsite
+        method: POST
+        description: Scan a website for malicious content and threats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: input
+          in: body
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: virus-scan-scan-rest
+    port: 8080
+    description: REST adapter for virusapi — Scan. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/virus/scan/file
+      name: virus-scan-file
+      description: REST surface for virus-scan-file.
+      operations:
+      - method: POST
+        name: scanfile
+        description: Scan a file for viruses
+        call: virus-scan-scan.scanfile
+        with:
+          inputFile: rest.inputFile
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/virus/scan/file/advanced
+      name: virus-scan-file-advanced
+      description: REST surface for virus-scan-file-advanced.
+      operations:
+      - method: POST
+        name: scanfileadvanced
+        description: Advanced Scan a file for viruses
+        call: virus-scan-scan.scanfileadvanced
+        with:
+          inputFile: rest.inputFile
+          fileName: rest.fileName
+          allowExecutables: rest.allowExecutables
+          allowInvalidFiles: rest.allowInvalidFiles
+          allowScripts: rest.allowScripts
+          allowPasswordProtectedFiles: rest.allowPasswordProtectedFiles
+          allowMacros: rest.allowMacros
+          allowXmlExternalEntities: rest.allowXmlExternalEntities
+          allowInsecureDeserialization: rest.allowInsecureDeserialization
+          allowHtml: rest.allowHtml
+          allowUnsafeArchives: rest.allowUnsafeArchives
+          allowOleEmbeddedObject: rest.allowOleEmbeddedObject
+          allowUnwantedAction: rest.allowUnwantedAction
+          options: rest.options
+          restrictFileTypes: rest.restrictFileTypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/virus/scan/website
+      name: virus-scan-website
+      description: REST surface for virus-scan-website.
+      operations:
+      - method: POST
+        name: scanwebsite
+        description: Scan a website for malicious content and threats
+        call: virus-scan-scan.scanwebsite
+        with:
+          input: rest.input
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: virus-scan-scan-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for virusapi — Scan. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: scan-file-viruses
+      description: Scan a file for viruses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: virus-scan-scan.scanfile
+      with:
+        inputFile: tools.inputFile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: advanced-scan-file-viruses
+      description: Advanced Scan a file for viruses
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: virus-scan-scan.scanfileadvanced
+      with:
+        inputFile: tools.inputFile
+        fileName: tools.fileName
+        allowExecutables: tools.allowExecutables
+        allowInvalidFiles: tools.allowInvalidFiles
+        allowScripts: tools.allowScripts
+        allowPasswordProtectedFiles: tools.allowPasswordProtectedFiles
+        allowMacros: tools.allowMacros
+        allowXmlExternalEntities: tools.allowXmlExternalEntities
+        allowInsecureDeserialization: tools.allowInsecureDeserialization
+        allowHtml: tools.allowHtml
+        allowUnsafeArchives: tools.allowUnsafeArchives
+        allowOleEmbeddedObject: tools.allowOleEmbeddedObject
+        allowUnwantedAction: tools.allowUnwantedAction
+        options: tools.options
+        restrictFileTypes: tools.restrictFileTypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: scan-website-malicious-content-and
+      description: Scan a website for malicious content and threats
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: virus-scan-scan.scanwebsite
+      with:
+        input: tools.input
+      outputParameters:
+      - type: object
+        mapping: $.

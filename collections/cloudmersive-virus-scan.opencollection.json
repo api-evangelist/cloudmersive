@@ -1,0 +1,664 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "virusapi",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scan a file for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/file"
+          },
+          "docs": "Scan files and content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subseco"
+        },
+        {
+          "info": {
+            "name": "Advanced Scan a file for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/file/advanced",
+            "headers": [
+              {
+                "name": "fileName",
+                "value": ""
+              },
+              {
+                "name": "allowExecutables",
+                "value": ""
+              },
+              {
+                "name": "allowInvalidFiles",
+                "value": ""
+              },
+              {
+                "name": "allowScripts",
+                "value": ""
+              },
+              {
+                "name": "allowPasswordProtectedFiles",
+                "value": ""
+              },
+              {
+                "name": "allowMacros",
+                "value": ""
+              },
+              {
+                "name": "allowXmlExternalEntities",
+                "value": ""
+              },
+              {
+                "name": "allowInsecureDeserialization",
+                "value": ""
+              },
+              {
+                "name": "allowHtml",
+                "value": ""
+              },
+              {
+                "name": "allowUnsafeArchives",
+                "value": ""
+              },
+              {
+                "name": "allowOleEmbeddedObject",
+                "value": ""
+              },
+              {
+                "name": "allowUnwantedAction",
+                "value": ""
+              },
+              {
+                "name": "options",
+                "value": ""
+              },
+              {
+                "name": "restrictFileTypes",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Block threats beyond viruses including executables, scripts, "
+        },
+        {
+          "info": {
+            "name": "Scan a website for malicious content and threats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/website"
+          },
+          "docs": "Operation includes scanning the content of the URL for various types of malicious content and threats, including viruses and threats (including Phishing)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ScanCloudStorage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scan an Azure Blob for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/azure-blob/single",
+            "headers": [
+              {
+                "name": "connectionString",
+                "value": ""
+              },
+              {
+                "name": "containerName",
+                "value": ""
+              },
+              {
+                "name": "blobPath",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Scan the contents of a single Azure Blob and its content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed i"
+        },
+        {
+          "info": {
+            "name": "Advanced Scan an Azure Blob for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/azure-blob/single/advanced",
+            "headers": [
+              {
+                "name": "connectionString",
+                "value": ""
+              },
+              {
+                "name": "containerName",
+                "value": ""
+              },
+              {
+                "name": "blobPath",
+                "value": ""
+              },
+              {
+                "name": "allowExecutables",
+                "value": ""
+              },
+              {
+                "name": "allowInvalidFiles",
+                "value": ""
+              },
+              {
+                "name": "allowScripts",
+                "value": ""
+              },
+              {
+                "name": "allowPasswordProtectedFiles",
+                "value": ""
+              },
+              {
+                "name": "allowMacros",
+                "value": ""
+              },
+              {
+                "name": "allowXmlExternalEntities",
+                "value": ""
+              },
+              {
+                "name": "allowInsecureDeserialization",
+                "value": ""
+              },
+              {
+                "name": "allowHtml",
+                "value": ""
+              },
+              {
+                "name": "allowUnsafeArchives",
+                "value": ""
+              },
+              {
+                "name": "allowOleEmbeddedObject",
+                "value": ""
+              },
+              {
+                "name": "allowUnwantedAction",
+                "value": ""
+              },
+              {
+                "name": "options",
+                "value": ""
+              },
+              {
+                "name": "restrictFileTypes",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Advanced Scan the contents of a single Azure Blob and its content for viruses and threats.  Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Co"
+        },
+        {
+          "info": {
+            "name": "Advanced Scan an Azure Blob for viruses via a batch job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/azure-blob/single/advanced/batch-job",
+            "headers": [
+              {
+                "name": "connectionString",
+                "value": ""
+              },
+              {
+                "name": "containerName",
+                "value": ""
+              },
+              {
+                "name": "blobPath",
+                "value": ""
+              },
+              {
+                "name": "allowExecutables",
+                "value": ""
+              },
+              {
+                "name": "allowInvalidFiles",
+                "value": ""
+              },
+              {
+                "name": "allowScripts",
+                "value": ""
+              },
+              {
+                "name": "allowPasswordProtectedFiles",
+                "value": ""
+              },
+              {
+                "name": "allowMacros",
+                "value": ""
+              },
+              {
+                "name": "allowXmlExternalEntities",
+                "value": ""
+              },
+              {
+                "name": "allowInsecureDeserialization",
+                "value": ""
+              },
+              {
+                "name": "allowHtml",
+                "value": ""
+              },
+              {
+                "name": "allowUnsafeArchives",
+                "value": ""
+              },
+              {
+                "name": "allowOleEmbeddedObject",
+                "value": ""
+              },
+              {
+                "name": "allowUnwantedAction",
+                "value": ""
+              },
+              {
+                "name": "options",
+                "value": ""
+              },
+              {
+                "name": "restrictFileTypes",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Via a batch job, advanced Scan the contents of a single Azure Blob and its content for viruses and threats, great for larger/longer processing jobs.  Requires Managed Instance or Private Cloud.  Returns a job ID which you can then use the Get Job Status API to get the status and output of the job.  Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification."
+        },
+        {
+          "info": {
+            "name": "Scan an AWS S3 file for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/aws-s3/single",
+            "headers": [
+              {
+                "name": "accessKey",
+                "value": ""
+              },
+              {
+                "name": "secretKey",
+                "value": ""
+              },
+              {
+                "name": "bucketRegion",
+                "value": ""
+              },
+              {
+                "name": "bucketName",
+                "value": ""
+              },
+              {
+                "name": "keyName",
+                "value": ""
+              },
+              {
+                "name": "roleArn",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Scan the contents of a single AWS S3 file and its content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed "
+        },
+        {
+          "info": {
+            "name": "Advanced Scan an AWS S3 file for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/aws-s3/single/advanced",
+            "headers": [
+              {
+                "name": "accessKey",
+                "value": ""
+              },
+              {
+                "name": "secretKey",
+                "value": ""
+              },
+              {
+                "name": "bucketRegion",
+                "value": ""
+              },
+              {
+                "name": "bucketName",
+                "value": ""
+              },
+              {
+                "name": "keyName",
+                "value": ""
+              },
+              {
+                "name": "roleArn",
+                "value": ""
+              },
+              {
+                "name": "allowExecutables",
+                "value": ""
+              },
+              {
+                "name": "allowInvalidFiles",
+                "value": ""
+              },
+              {
+                "name": "allowScripts",
+                "value": ""
+              },
+              {
+                "name": "allowPasswordProtectedFiles",
+                "value": ""
+              },
+              {
+                "name": "allowMacros",
+                "value": ""
+              },
+              {
+                "name": "allowXmlExternalEntities",
+                "value": ""
+              },
+              {
+                "name": "allowInsecureDeserialization",
+                "value": ""
+              },
+              {
+                "name": "allowHtml",
+                "value": ""
+              },
+              {
+                "name": "allowUnsafeArchives",
+                "value": ""
+              },
+              {
+                "name": "allowOleEmbeddedObject",
+                "value": ""
+              },
+              {
+                "name": "allowUnwantedAction",
+                "value": ""
+              },
+              {
+                "name": "options",
+                "value": ""
+              },
+              {
+                "name": "restrictFileTypes",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Advanced Scan the contents of a single AWS S3 file and its content for viruses and threats. Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Co"
+        },
+        {
+          "info": {
+            "name": "Virus Scan a file in a SharePoint Online Site Drive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/sharepoint-online/site/single",
+            "headers": [
+              {
+                "name": "clientID",
+                "value": ""
+              },
+              {
+                "name": "clientSecret",
+                "value": ""
+              },
+              {
+                "name": "sharepointDomainName",
+                "value": ""
+              },
+              {
+                "name": "siteID",
+                "value": ""
+              },
+              {
+                "name": "tenantID",
+                "value": ""
+              },
+              {
+                "name": "filePath",
+                "value": ""
+              },
+              {
+                "name": "itemID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Virus Scan the contents of a single SharePoint Online Site Drive file and its content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomwar"
+        },
+        {
+          "info": {
+            "name": "Advanced Virus Scan a file in a SharePoint Online Site Drive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/sharepoint-online/site/advanced",
+            "headers": [
+              {
+                "name": "clientID",
+                "value": ""
+              },
+              {
+                "name": "clientSecret",
+                "value": ""
+              },
+              {
+                "name": "sharepointDomainName",
+                "value": ""
+              },
+              {
+                "name": "siteID",
+                "value": ""
+              },
+              {
+                "name": "tenantID",
+                "value": ""
+              },
+              {
+                "name": "filePath",
+                "value": ""
+              },
+              {
+                "name": "itemID",
+                "value": ""
+              },
+              {
+                "name": "allowExecutables",
+                "value": ""
+              },
+              {
+                "name": "allowInvalidFiles",
+                "value": ""
+              },
+              {
+                "name": "allowScripts",
+                "value": ""
+              },
+              {
+                "name": "allowPasswordProtectedFiles",
+                "value": ""
+              },
+              {
+                "name": "allowMacros",
+                "value": ""
+              },
+              {
+                "name": "allowXmlExternalEntities",
+                "value": ""
+              },
+              {
+                "name": "allowInsecureDeserialization",
+                "value": ""
+              },
+              {
+                "name": "allowHtml",
+                "value": ""
+              },
+              {
+                "name": "allowUnsafeArchives",
+                "value": ""
+              },
+              {
+                "name": "allowOleEmbeddedObject",
+                "value": ""
+              },
+              {
+                "name": "allowUnwantedAction",
+                "value": ""
+              },
+              {
+                "name": "restrictFileTypes",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Advanced Virus Scan the contents of a single SharePoint Online Site Drive file and its content for viruses and threats.  Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million viru"
+        },
+        {
+          "info": {
+            "name": "Scan an Google Cloud Platform (GCP) Storage file for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/gcp-storage/single",
+            "headers": [
+              {
+                "name": "bucketName",
+                "value": ""
+              },
+              {
+                "name": "objectName",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Scan the contents of a single Google Cloud Platform (GCP) Storage file and its content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomwa"
+        },
+        {
+          "info": {
+            "name": "Advanced Scan an Google Cloud Platform (GCP) Storage file for viruses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/gcp-storage/single/advanced",
+            "headers": [
+              {
+                "name": "bucketName",
+                "value": ""
+              },
+              {
+                "name": "objectName",
+                "value": ""
+              },
+              {
+                "name": "allowExecutables",
+                "value": ""
+              },
+              {
+                "name": "allowInvalidFiles",
+                "value": ""
+              },
+              {
+                "name": "allowScripts",
+                "value": ""
+              },
+              {
+                "name": "allowPasswordProtectedFiles",
+                "value": ""
+              },
+              {
+                "name": "allowMacros",
+                "value": ""
+              },
+              {
+                "name": "allowXmlExternalEntities",
+                "value": ""
+              },
+              {
+                "name": "allowInsecureDeserialization",
+                "value": ""
+              },
+              {
+                "name": "allowHtml",
+                "value": ""
+              },
+              {
+                "name": "allowUnsafeArchives",
+                "value": ""
+              },
+              {
+                "name": "allowOleEmbeddedObject",
+                "value": ""
+              },
+              {
+                "name": "allowUnwantedAction",
+                "value": ""
+              },
+              {
+                "name": "options",
+                "value": ""
+              },
+              {
+                "name": "restrictFileTypes",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Advanced Scan the contents of a single Google Cloud Platform (GCP) Storage file and its content for viruses and threats. Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million viru"
+        },
+        {
+          "info": {
+            "name": "Get the status and result of a Scan Cloud Storage Batch Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/virus/scan/cloud-storage/batch-job/status",
+            "params": [
+              {
+                "name": "AsyncJobID",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

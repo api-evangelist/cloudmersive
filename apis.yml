@@ -279,7 +279,7 @@ common:
     url: https://cloudmersive.com/
   - type: Portal
     url: https://cloudmersive.com/developer
-  - type: API Console
+  - type: Console
     url: https://api-console.cloudmersive.com/swagger/index.html
   - type: OpenAPI Index
     url: https://api.cloudmersive.com/openapi.asp

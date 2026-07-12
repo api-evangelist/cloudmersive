@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/cloudmersive-virus-scan-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: Apikey
+  type: apiKey
+  in: header
+  parameter: Apikey
+  description: API Key Authentication
+  sources:
+  - openapi/cloudmersive-virus-scan-openapi.json

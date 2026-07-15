@@ -271,6 +271,8 @@ apis:
         type: OpenAPI
     description: Connect, transform, and integrate data across systems and file formats.
 common:
+  - type: AgenticAccess
+    url: agentic-access/cloudmersive-agentic-access.yml
   - type: DomainSecurity
     url: security/cloudmersive-domain-security.yml
   - type: Authentication

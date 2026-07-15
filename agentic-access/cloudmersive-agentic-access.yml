@@ -1,0 +1,218 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/cloudmersive-virus-scan-openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 13
+  by_action_class:
+    acting: 12
+    connected: 1
+  by_consequence:
+    write: 12
+    read: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /virus/scan/file
+  method: post
+  operationId: Scan_File
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/file/advanced
+  method: post
+  operationId: Scan_FileAdvanced
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/website
+  method: post
+  operationId: Scan_Website
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/azure-blob/single
+  method: post
+  operationId: ScanCloudStorage_ScanAzureBlob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/azure-blob/single/advanced
+  method: post
+  operationId: ScanCloudStorage_ScanAzureBlobAdvanced
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/azure-blob/single/advanced/batch-job
+  method: post
+  operationId: ScanCloudStorage_ScanAzureBlobAdvancedBatchJob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/aws-s3/single
+  method: post
+  operationId: ScanCloudStorage_ScanAwsS3File
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/aws-s3/single/advanced
+  method: post
+  operationId: ScanCloudStorage_ScanAwsS3FileAdvanced
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/sharepoint-online/site/single
+  method: post
+  operationId: ScanCloudStorage_ScanSharePointOnlineFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/sharepoint-online/site/advanced
+  method: post
+  operationId: ScanCloudStorage_ScanSharePointOnlineFileAdvanced
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/gcp-storage/single
+  method: post
+  operationId: ScanCloudStorage_ScanGcpStorageFile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/gcp-storage/single/advanced
+  method: post
+  operationId: ScanCloudStorage_ScanGcpStorageFileAdvanced
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /virus/scan/cloud-storage/batch-job/status
+  method: get
+  operationId: ScanCloudStorage_GetAsyncJobStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

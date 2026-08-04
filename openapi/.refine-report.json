@@ -1,0 +1,16 @@
+{
+  "provider": "cloudmersive",
+  "sources": [
+    "cloudmersive-scan-api-openapi.yml",
+    "cloudmersive-scancloudstorage-api-openapi.yml"
+  ],
+  "outputs": [
+    "cloudmersive-scan-api-openapi.yml",
+    "cloudmersive-scancloudstorage-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

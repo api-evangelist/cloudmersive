@@ -1,0 +1,553 @@
+{
+  "item": [
+    {
+      "id": "b9bf8d0c-76b7-48da-93d7-20e561ce7412",
+      "name": "Scan",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1b48f41-0805-462a-966e-7b698b0ce297",
+          "name": "Scan a file for viruses",
+          "request": {
+            "name": "Scan a file for viruses",
+            "description": {
+              "content": "Scan files and content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subsecond typical response time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "virus",
+                "scan",
+                "file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "inputFile",
+                  "type": "file",
+                  "description": "(Required) Input file to perform the operation on."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2ae685ec-a498-4c37-b486-e310a382b94a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "virus",
+                    "scan",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CleanResult\": false,\n  \"FoundViruses\": [\n    {\n      \"FileName\": \"string\",\n      \"VirusName\": \"string\"\n    },\n    {\n      \"FileName\": \"string\",\n      \"VirusName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cb5c008-3cf9-4c69-aca9-50a190b18442",
+          "name": "Advanced Scan a file for viruses",
+          "request": {
+            "name": "Advanced Scan a file for viruses",
+            "description": {
+              "content": "Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Block threats beyond viruses including executables, scripts, invalid files, and more.  Optionally limit input files to a specific set of file types (e.g. PDF and Word Documents only).  Wide file format support including Office, PDF, HTML, Flash, MSG, and a wide range of image file formats.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subsecond typical response time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "virus",
+                "scan",
+                "file",
+                "advanced"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter.",
+                "key": "fileName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).",
+                "key": "allowExecutables",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).",
+                "key": "allowInvalidFiles",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block script files, such as a PHP files, Python scripts, BAT scripts, JS scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).",
+                "key": "allowScripts",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended).",
+                "key": "allowPasswordProtectedFiles",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros (including support for .DOCX, .XLSX, .PPTX, .DOC and .XLS), and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended).",
+                "key": "allowMacros",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended).",
+                "key": "allowXmlExternalEntities",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended).",
+                "key": "allowInsecureDeserialization",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present.",
+                "key": "allowHtml",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed.",
+                "key": "allowUnsafeArchives",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed.",
+                "key": "allowOleEmbeddedObject",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Set to false to block unwanted or undesired actions, which can contain execute or open links or content when the file is viewed.  Default is false (recommended).  If set to true, unwanted actions will be allowed.",
+                "key": "allowUnwantedAction",
+                "value": "<boolean>"
+              },
+              {
+                "disabled": false,
+                "description": "Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Include permitJavascriptInHtml to allow JavaScript in HTML files.  Include blockOfficeXmlOleEmbeddedFile to block embedded OLE files in Office Documents using the modern file format.  Include blockInvalidUris to block invalid URIs in Office documents.  Include permitAuthenticodeSignedExecutables to allow executables if they have a valid Authenticode signature.  Include scanMultipartFile to scan multi-part files such as split zip files.  Include ignoreRestrictFileTypesForAttachments to ignore restrictFileTypes setting for file attachments.  Default is no options.",
+                "key": "options",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult=false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled.",
+                "key": "restrictFileTypes",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "inputFile",
+                  "value": "<binary>",
+                  "type": "text",
+                  "description": "(Required) Input file to perform the operation on."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e16eeb37-5fed-4b44-bf13-6a09e6f93cd1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "virus",
+                    "scan",
+                    "file",
+                    "advanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional: specify the original file name of the file being scanned.  By default the file name is taken from inputFile parameter, but if this is not provided, or you wish to override it, you can specify the original file name using this parameter.",
+                    "key": "fileName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).",
+                    "key": "allowExecutables",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).",
+                    "key": "allowInvalidFiles",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block script files, such as a PHP files, Python scripts, BAT scripts, JS scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).",
+                    "key": "allowScripts",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block password protected and encrypted files, such as encrypted zip and rar files, and other files that seek to circumvent scanning through passwords.  Set to true to allow these file types.  Default is false (recommended).",
+                    "key": "allowPasswordProtectedFiles",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block macros and other threats embedded in document files, such as Word, Excel and PowerPoint embedded Macros (including support for .DOCX, .XLSX, .PPTX, .DOC and .XLS), and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended).",
+                    "key": "allowMacros",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended).",
+                    "key": "allowXmlExternalEntities",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block Insecure Deserialization and other threats embedded in JSON and other object serialization files, and other files that contain embedded content threats.  Set to true to allow these file types.  Default is false (recommended).",
+                    "key": "allowInsecureDeserialization",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block HTML input in the top level file; HTML can contain XSS, scripts, local file accesses and other threats.  Set to true to allow these file types.  Default is false (recommended) [for API keys created prior to the release of this feature default is true for backward compatability].  If set to true, HTML files containing script tags will be allowed, but ContainsScript will be set to true if script tags are present.",
+                    "key": "allowHtml",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block unsafe archives such as Zip Bombs, and other archives that can cause unsafe extraction outcomes.  Default is false (recommended).  If set to true, unsafe archives will be allowed.",
+                    "key": "allowUnsafeArchives",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block OLE embedded objects, which can contain vulnerabilities and executable code.  Default is false (recommended).  If set to true, OLE embedded objects will be allowed.",
+                    "key": "allowOleEmbeddedObject",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Set to false to block unwanted or undesired actions, which can contain execute or open links or content when the file is viewed.  Default is false (recommended).  If set to true, unwanted actions will be allowed.",
+                    "key": "allowUnwantedAction",
+                    "value": "<boolean>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Comma separated set of configuration operations.  Include permitJavascriptAndHtmlInPDFs to allow JavaScript and HTML in PDF files.  Include permitJavascriptInHtml to allow JavaScript in HTML files.  Include blockOfficeXmlOleEmbeddedFile to block embedded OLE files in Office Documents using the modern file format.  Include blockInvalidUris to block invalid URIs in Office documents.  Include permitAuthenticodeSignedExecutables to allow executables if they have a valid Authenticode signature.  Include scanMultipartFile to scan multi-part files such as split zip files.  Include ignoreRestrictFileTypesForAttachments to ignore restrictFileTypes setting for file attachments.  Default is no options.",
+                    "key": "options",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult=false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled.",
+                    "key": "restrictFileTypes",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CleanResult\": false,\n  \"ContainsExecutable\": true,\n  \"ContainsInvalidFile\": true,\n  \"ContainsScript\": true,\n  \"ContainsPasswordProtectedFile\": false,\n  \"ContainsRestrictedFileFormat\": true,\n  \"ContainsMacros\": true,\n  \"ContainsXmlExternalEntities\": false,\n  \"ContainsInsecureDeserialization\": true,\n  \"ContainsHtml\": false,\n  \"ContainsUnsafeArchive\": true,\n  \"ContainsOleEmbeddedObject\": true,\n  \"ContainsUnwantedAction\": false,\n  \"VerifiedFileFormat\": \"string\",\n  \"FoundViruses\": [\n    {\n      \"FileName\": \"string\",\n      \"VirusName\": \"string\"\n    },\n    {\n      \"FileName\": \"string\",\n      \"VirusName\": \"string\"\n    }\n  ],\n  \"ContentInformation\": {\n    \"ContainsJSON\": false,\n    \"ContainsXML\": true,\n    \"ContainsImage\": true,\n    \"Hash_SHA1\": \"string\",\n    \"RelevantSubfileName\": \"string\",\n    \"RelevantSubfileHash_SHA1\": \"string\",\n    \"IsAuthenticodeSigned\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcd2dd55-4af6-424e-b71c-839f671d36ba",
+          "name": "Scan a website for malicious content and threats",
+          "request": {
+            "name": "Scan a website for malicious content and threats",
+            "description": {
+              "content": "Operation includes scanning the content of the URL for various types of malicious content and threats, including viruses and threats (including Phishing).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "virus",
+                "scan",
+                "website"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Url",
+                  "value": "<string>",
+                  "description": "URL of the website to scan; should begin with http:// or https://"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "447f334e-0b3a-46cf-881a-0f0f6654aa5c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "virus",
+                    "scan",
+                    "website"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "URL of the website to scan; should begin with http:// or https://",
+                        "type": "text/plain"
+                      },
+                      "key": "Url",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CleanResult\": true,\n  \"WebsiteThreatType\": \"Phishing\",\n  \"FoundViruses\": [\n    {\n      \"FileName\": \"string\",\n      \"VirusName\": \"string\"\n    },\n    {\n      \"FileName\": \"string\",\n      \"VirusName\": \"string\"\n    }\n  ],\n  \"WebsiteHttpResponseCode\": 1743\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d992af26-0302-4840-aacd-c8da76d49d75",
+    "name": "virusapi Scan API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloudmersive Virus Scan API lets you scan files and content for viruses and identify security issues with content.",
+      "type": "text/plain"
+    }
+  }
+}

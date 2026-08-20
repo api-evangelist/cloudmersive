@@ -6,6 +6,16 @@ tags:
   - Conversions
   - Documents
   - Image Recognition
+  - Natural-Language
+  - OCR
+  - Processing
+  - Validation
+  - Virus Scanning
+tags_raw:
+  - Barcodes
+  - Conversions
+  - Documents
+  - Image Recognition
   - Natural Language
   - OCR
   - Processing
@@ -43,6 +53,8 @@ apis:
   description: The Scan API from Cloudmersive — 3 operation(s) for scan.
   humanURL: https://cloudmersive.com/virus-api
   tags:
+  - Scans
+  tags_raw:
   - Scan
   properties:
   - type: OpenAPI

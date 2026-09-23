@@ -1,0 +1,30 @@
+# Front Door AI Index — cloudmersive — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: cloudmersive
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: cloudmersive.com
+  final_host: cloudmersive.com
+  ownership: own
+  owner: cloudmersive
+  shares_host_with:
+  - cloudmersive-document-and-data-conversion
+  - cloudmersive-validate
+  inherited_from: null
+  verdict: scored
+  score: 19
+  host_score: 19
+  density: 14.96
+  words: 1270
+  tiers:
+    agentic: 0
+    core: 19
+    model: 0
+  ambiguous: 1
+  top_terms:
+    AI: 17
+    automation: 1
+    deep learning: 1
+    machine learning: 1

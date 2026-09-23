@@ -1,8 +1,7 @@
 {
   "provider": "cloudmersive",
   "sources": [
-    "cloudmersive-scan-api-openapi.yml",
-    "cloudmersive-scancloudstorage-api-openapi.yml"
+    "_original/cloudmersive-virus-scan-openapi.json"
   ],
   "outputs": [
     "cloudmersive-scan-api-openapi.yml",
@@ -11,6 +10,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cloudmersive-virus-scan-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "cloudmersive-virus-scan-openapi.json: declared missing tag: Scan",
+    "cloudmersive-virus-scan-openapi.json: declared missing tag: ScanCloudStorage",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cloudmersive-scan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudmersive-scancloudstorage-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

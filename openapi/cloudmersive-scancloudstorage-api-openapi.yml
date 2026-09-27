@@ -917,31 +917,6 @@ paths:
       - Apikey: []
 components:
   schemas:
-    AdditionalAdvancedScanInformation:
-      description: Additional non-threat content verification information
-      type: object
-      properties:
-        ContainsJSON:
-          description: True if the input file contains JSON data, false otherwise; this is not a threat signal
-          type: boolean
-        ContainsXML:
-          description: True if the input file contains XML data, false otherwise; this is not a threat signal
-          type: boolean
-        ContainsImage:
-          description: True if the input file contains an image
-          type: boolean
-        Hash_SHA1:
-          description: SHA1 hash of input file
-          type: string
-        RelevantSubfileName:
-          description: Relevant subfile name in an archive format for identified threats, if any
-          type: string
-        RelevantSubfileHash_SHA1:
-          description: SHA1 hash of relevant subfile name in an archive format for identified threats, if any
-          type: string
-        IsAuthenticodeSigned:
-          description: True if there is a valid Authenticode signature, False otherwise
-          type: boolean
     ScanCloudStorageJobStatusResult:
       description: Status of the scan cloud storage job
       type: object
@@ -963,6 +938,87 @@ components:
           type: string
         ErrorMessage:
           description: Error message (if any)
+          type: string
+    CloudStorageVirusScanResult:
+      description: Result of running a virus scan on cloud storage
+      type: object
+      properties:
+        Successful:
+          description: True if the operation of retrieving the file, and scanning it were successfully completed, false if the file could not be downloaded from cloud storage, or if the file could not be scanned.  Note that successful completion does not mean the file is clean; for the output of the virus scanning operation itself, use the CleanResult and FoundViruses parameters.
+          type: boolean
+        CleanResult:
+          description: True if the scan contained no viruses, false otherwise
+          type: boolean
+        FoundViruses:
+          description: Array of viruses found, if any
+          type: array
+          items:
+            $ref: '#/components/schemas/CloudStorageVirusFound'
+        ErrorDetailedDescription:
+          description: Detailed error message if the operation was not successful
+          type: string
+        FileSize:
+          format: int64
+          description: Size in bytes of the file that was retrieved and scanned
+          type: integer
+        ContainsContentModerationRejection:
+          description: Set to true when using NSFW Content Moderation in the Cloudmersive Storage Protect product (disabled by default)
+          type: boolean
+        ContainsExecutable:
+          description: True if the scan contained an executable (application code), which can be a significant risk factor
+          type: boolean
+        ContainsInvalidFile:
+          description: True if the scan contained an invalid file (such as a PDF that is not a valid PDF, Word Document that is not a valid Word Document, etc.), which can be a significant risk factor
+          type: boolean
+        ContainsScript:
+          description: True if the scan contained a script (such as a PHP script, Python script, etc.) which can be a significant risk factor
+          type: boolean
+        ContainsPasswordProtectedFile:
+          description: True if the scan contained a password protected or encrypted file, which can be a significant risk factor
+          type: boolean
+        ContainsRestrictedFileFormat:
+          description: True if the uploaded file is of a type that is not allowed based on the optional restrictFileTypes parameter, false otherwise; if restrictFileTypes is not set, this will always be false
+          type: boolean
+        ContainsMacros:
+          description: True if the uploaded file contains embedded Macros of other embedded threats within the document, which can be a significant risk factor
+          type: boolean
+        ContainsXmlExternalEntities:
+          description: True if the uploaded file contains embedded XML External Entity threats of other embedded threats within the document, which can be a significant risk factor
+          type: boolean
+        ContainsInsecureDeserialization:
+          description: True if the uploaded file contains embedded Insecure Deserialization threats of other embedded threats within the document, which can be a significant risk factor
+          type: boolean
+        ContainsHtml:
+          description: True if the uploaded file contains HTML, which can be a significant risk factor
+          type: boolean
+        ContainsUnsafeArchive:
+          description: True if the uploaded file contains unsafe archive (e.g. zip) content, such as a Zip Bomb, or other configurations of a zip file that could lead to an unsafe extraction
+          type: boolean
+        ContainsOleEmbeddedObject:
+          description: True if the uploaded file contains an OLE embedded object, which can be a significant risk factor
+          type: boolean
+        VerifiedFileFormat:
+          description: For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
+          type: string
+    ScanCloudStorageBatchJobCreateResult:
+      description: Result of performing a convert documentbatch job operation
+      type: object
+      properties:
+        Successful:
+          description: True if successful, false otherwise
+          type: boolean
+        AsyncJobID:
+          description: When creating a job, an Async Job ID is returned.  Use the GetAsyncJobStatus API to check on the status of this job using the AsyncJobID and get the result when it finishes
+          type: string
+    CloudStorageVirusFound:
+      description: Virus positively identified
+      type: object
+      properties:
+        FileName:
+          description: Name of the file containing the virus
+          type: string
+        VirusName:
+          description: Name of the virus that was found
           type: string
     CloudStorageAdvancedVirusScanResult:
       description: Result of running an advanced virus scan on cloud storage
@@ -1025,87 +1081,31 @@ components:
         ContentInformation:
           $ref: '#/components/schemas/AdditionalAdvancedScanInformation'
           description: Contains additional non-threat content verification information
-    CloudStorageVirusScanResult:
-      description: Result of running a virus scan on cloud storage
+    AdditionalAdvancedScanInformation:
+      description: Additional non-threat content verification information
       type: object
       properties:
-        Successful:
-          description: True if the operation of retrieving the file, and scanning it were successfully completed, false if the file could not be downloaded from cloud storage, or if the file could not be scanned.  Note that successful completion does not mean the file is clean; for the output of the virus scanning operation itself, use the CleanResult and FoundViruses parameters.
+        ContainsJSON:
+          description: True if the input file contains JSON data, false otherwise; this is not a threat signal
           type: boolean
-        CleanResult:
-          description: True if the scan contained no viruses, false otherwise
+        ContainsXML:
+          description: True if the input file contains XML data, false otherwise; this is not a threat signal
           type: boolean
-        FoundViruses:
-          description: Array of viruses found, if any
-          type: array
-          items:
-            $ref: '#/components/schemas/CloudStorageVirusFound'
-        ErrorDetailedDescription:
-          description: Detailed error message if the operation was not successful
+        ContainsImage:
+          description: True if the input file contains an image
+          type: boolean
+        Hash_SHA1:
+          description: SHA1 hash of input file
           type: string
-        FileSize:
-          format: int64
-          description: Size in bytes of the file that was retrieved and scanned
-          type: integer
-        ContainsContentModerationRejection:
-          description: Set to true when using NSFW Content Moderation in the Cloudmersive Storage Protect product (disabled by default)
-          type: boolean
-        ContainsExecutable:
-          description: True if the scan contained an executable (application code), which can be a significant risk factor
-          type: boolean
-        ContainsInvalidFile:
-          description: True if the scan contained an invalid file (such as a PDF that is not a valid PDF, Word Document that is not a valid Word Document, etc.), which can be a significant risk factor
-          type: boolean
-        ContainsScript:
-          description: True if the scan contained a script (such as a PHP script, Python script, etc.) which can be a significant risk factor
-          type: boolean
-        ContainsPasswordProtectedFile:
-          description: True if the scan contained a password protected or encrypted file, which can be a significant risk factor
-          type: boolean
-        ContainsRestrictedFileFormat:
-          description: True if the uploaded file is of a type that is not allowed based on the optional restrictFileTypes parameter, false otherwise; if restrictFileTypes is not set, this will always be false
-          type: boolean
-        ContainsMacros:
-          description: True if the uploaded file contains embedded Macros of other embedded threats within the document, which can be a significant risk factor
-          type: boolean
-        ContainsXmlExternalEntities:
-          description: True if the uploaded file contains embedded XML External Entity threats of other embedded threats within the document, which can be a significant risk factor
-          type: boolean
-        ContainsInsecureDeserialization:
-          description: True if the uploaded file contains embedded Insecure Deserialization threats of other embedded threats within the document, which can be a significant risk factor
-          type: boolean
-        ContainsHtml:
-          description: True if the uploaded file contains HTML, which can be a significant risk factor
-          type: boolean
-        ContainsUnsafeArchive:
-          description: True if the uploaded file contains unsafe archive (e.g. zip) content, such as a Zip Bomb, or other configurations of a zip file that could lead to an unsafe extraction
-          type: boolean
-        ContainsOleEmbeddedObject:
-          description: True if the uploaded file contains an OLE embedded object, which can be a significant risk factor
-          type: boolean
-        VerifiedFileFormat:
-          description: For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
+        RelevantSubfileName:
+          description: Relevant subfile name in an archive format for identified threats, if any
           type: string
-    CloudStorageVirusFound:
-      description: Virus positively identified
-      type: object
-      properties:
-        FileName:
-          description: Name of the file containing the virus
+        RelevantSubfileHash_SHA1:
+          description: SHA1 hash of relevant subfile name in an archive format for identified threats, if any
           type: string
-        VirusName:
-          description: Name of the virus that was found
-          type: string
-    ScanCloudStorageBatchJobCreateResult:
-      description: Result of performing a convert documentbatch job operation
-      type: object
-      properties:
-        Successful:
-          description: True if successful, false otherwise
+        IsAuthenticodeSigned:
+          description: True if there is a valid Authenticode signature, False otherwise
           type: boolean
-        AsyncJobID:
-          description: When creating a job, an Async Job ID is returned.  Use the GetAsyncJobStatus API to check on the status of this job using the AsyncJobID and get the result when it finishes
-          type: string
   securitySchemes:
     Apikey:
       type: apiKey

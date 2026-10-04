@@ -163,6 +163,9 @@ apis:
     url: >-
       https://api-console.cloudmersive.com/swagger/index.html?urls.primaryName=Data%20Integration%20API
 common:
+  - type: CapabilityMap
+    url: capabilities/cloudmersive-capability-edges.yml
+    name: Cloudmersive Business Capability Map
   - type: AgenticAccess
     url: agentic-access/cloudmersive-agentic-access.yml
   - type: DomainSecurity

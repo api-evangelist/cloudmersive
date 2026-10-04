@@ -917,16 +917,6 @@ paths:
       - Apikey: []
 components:
   schemas:
-    CloudStorageVirusFound:
-      description: Virus positively identified
-      type: object
-      properties:
-        FileName:
-          description: Name of the file containing the virus
-          type: string
-        VirusName:
-          description: Name of the virus that was found
-          type: string
     AdditionalAdvancedScanInformation:
       description: Additional non-threat content verification information
       type: object
@@ -952,28 +942,6 @@ components:
         IsAuthenticodeSigned:
           description: True if there is a valid Authenticode signature, False otherwise
           type: boolean
-    ScanCloudStorageJobStatusResult:
-      description: Status of the scan cloud storage job
-      type: object
-      properties:
-        Successful:
-          description: Tru eif the operation to check the status of the job was successful, false otherwise
-          type: boolean
-        AsyncJobStatus:
-          description: Returns the job status of the Async Job, if applicable.  Possible states are STARTED and COMPLETED
-          type: string
-        AsyncJobID:
-          description: Job ID of the async batch job
-          type: string
-        Result:
-          $ref: '#/components/schemas/CloudStorageAdvancedVirusScanResult'
-          description: Output scan result, if applicable
-        JobDuration:
-          description: Duration of a completed job
-          type: string
-        ErrorMessage:
-          description: Error message (if any)
-          type: string
     CloudStorageVirusScanResult:
       description: Result of running a virus scan on cloud storage
       type: object
@@ -1105,6 +1073,38 @@ components:
           type: boolean
         AsyncJobID:
           description: When creating a job, an Async Job ID is returned.  Use the GetAsyncJobStatus API to check on the status of this job using the AsyncJobID and get the result when it finishes
+          type: string
+    ScanCloudStorageJobStatusResult:
+      description: Status of the scan cloud storage job
+      type: object
+      properties:
+        Successful:
+          description: Tru eif the operation to check the status of the job was successful, false otherwise
+          type: boolean
+        AsyncJobStatus:
+          description: Returns the job status of the Async Job, if applicable.  Possible states are STARTED and COMPLETED
+          type: string
+        AsyncJobID:
+          description: Job ID of the async batch job
+          type: string
+        Result:
+          $ref: '#/components/schemas/CloudStorageAdvancedVirusScanResult'
+          description: Output scan result, if applicable
+        JobDuration:
+          description: Duration of a completed job
+          type: string
+        ErrorMessage:
+          description: Error message (if any)
+          type: string
+    CloudStorageVirusFound:
+      description: Virus positively identified
+      type: object
+      properties:
+        FileName:
+          description: Name of the file containing the virus
+          type: string
+        VirusName:
+          description: Name of the virus that was found
           type: string
   securitySchemes:
     Apikey:

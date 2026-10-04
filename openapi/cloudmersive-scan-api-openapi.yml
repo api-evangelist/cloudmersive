@@ -212,16 +212,6 @@ paths:
         required: true
 components:
   schemas:
-    VirusFound:
-      description: Virus positively identified
-      type: object
-      properties:
-        FileName:
-          description: Name of the file containing the virus
-          type: string
-        VirusName:
-          description: Name of the virus that was found
-          type: string
     AdditionalAdvancedScanInformation:
       description: Additional non-threat content verification information
       type: object
@@ -272,6 +262,16 @@ components:
           format: int32
           description: The remote server URL HTTP reasponse code; useful for debugging issues with scanning; typically if the remote server returns a 200 or 300-series code this means a successful response, while a 400 or 500 series code would represent an error returned from the remote server for the provided URL.
           type: integer
+    VirusFound:
+      description: Virus positively identified
+      type: object
+      properties:
+        FileName:
+          description: Name of the file containing the virus
+          type: string
+        VirusName:
+          description: Name of the virus that was found
+          type: string
     VirusScanAdvancedResult:
       description: Result of running an advanced virus scan
       type: object
@@ -326,6 +326,13 @@ components:
         ContentInformation:
           $ref: '#/components/schemas/AdditionalAdvancedScanInformation'
           description: Contains additional non-threat content verification information
+    WebsiteScanRequest:
+      description: Request to scan a website for malicious content
+      type: object
+      properties:
+        Url:
+          description: URL of the website to scan; should begin with http:// or https://
+          type: string
     VirusScanResult:
       description: Result of running a virus scan
       type: object
@@ -338,13 +345,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VirusFound'
-    WebsiteScanRequest:
-      description: Request to scan a website for malicious content
-      type: object
-      properties:
-        Url:
-          description: URL of the website to scan; should begin with http:// or https://
-          type: string
   securitySchemes:
     Apikey:
       type: apiKey

@@ -212,66 +212,6 @@ paths:
         required: true
 components:
   schemas:
-    AdditionalAdvancedScanInformation:
-      description: Additional non-threat content verification information
-      type: object
-      properties:
-        ContainsJSON:
-          description: True if the input file contains JSON data, false otherwise; this is not a threat signal
-          type: boolean
-        ContainsXML:
-          description: True if the input file contains XML data, false otherwise; this is not a threat signal
-          type: boolean
-        ContainsImage:
-          description: True if the input file contains an image
-          type: boolean
-        Hash_SHA1:
-          description: SHA1 hash of input file
-          type: string
-        RelevantSubfileName:
-          description: Relevant subfile name in an archive format for identified threats, if any
-          type: string
-        RelevantSubfileHash_SHA1:
-          description: SHA1 hash of relevant subfile name in an archive format for identified threats, if any
-          type: string
-        IsAuthenticodeSigned:
-          description: True if there is a valid Authenticode signature, False otherwise
-          type: boolean
-    WebsiteScanResult:
-      description: Result of running a website scan
-      type: object
-      properties:
-        CleanResult:
-          description: True if the scan contained no threats, false otherwise
-          type: boolean
-        WebsiteThreatType:
-          description: Type of threat returned; can be None, Malware, ForcedDownload or Phishing
-          enum:
-          - None
-          - Malware
-          - Phishing
-          - ForcedDownload
-          - UnableToConnect
-          type: string
-        FoundViruses:
-          description: Array of viruses found, if any
-          type: array
-          items:
-            $ref: '#/components/schemas/VirusFound'
-        WebsiteHttpResponseCode:
-          format: int32
-          description: The remote server URL HTTP reasponse code; useful for debugging issues with scanning; typically if the remote server returns a 200 or 300-series code this means a successful response, while a 400 or 500 series code would represent an error returned from the remote server for the provided URL.
-          type: integer
-    VirusFound:
-      description: Virus positively identified
-      type: object
-      properties:
-        FileName:
-          description: Name of the file containing the virus
-          type: string
-        VirusName:
-          description: Name of the virus that was found
-          type: string
     VirusScanAdvancedResult:
       description: Result of running an advanced virus scan
       type: object
@@ -326,12 +266,15 @@ components:
         ContentInformation:
           $ref: '#/components/schemas/AdditionalAdvancedScanInformation'
           description: Contains additional non-threat content verification information
-    WebsiteScanRequest:
-      description: Request to scan a website for malicious content
+    VirusFound:
+      description: Virus positively identified
       type: object
       properties:
-        Url:
-          description: URL of the website to scan; should begin with http:// or https://
+        FileName:
+          description: Name of the file containing the virus
+          type: string
+        VirusName:
+          description: Name of the virus that was found
           type: string
     VirusScanResult:
       description: Result of running a virus scan
@@ -345,6 +288,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VirusFound'
+    AdditionalAdvancedScanInformation:
+      description: Additional non-threat content verification information
+      type: object
+      properties:
+        ContainsJSON:
+          description: True if the input file contains JSON data, false otherwise; this is not a threat signal
+          type: boolean
+        ContainsXML:
+          description: True if the input file contains XML data, false otherwise; this is not a threat signal
+          type: boolean
+        ContainsImage:
+          description: True if the input file contains an image
+          type: boolean
+        Hash_SHA1:
+          description: SHA1 hash of input file
+          type: string
+        RelevantSubfileName:
+          description: Relevant subfile name in an archive format for identified threats, if any
+          type: string
+        RelevantSubfileHash_SHA1:
+          description: SHA1 hash of relevant subfile name in an archive format for identified threats, if any
+          type: string
+        IsAuthenticodeSigned:
+          description: True if there is a valid Authenticode signature, False otherwise
+          type: boolean
+    WebsiteScanResult:
+      description: Result of running a website scan
+      type: object
+      properties:
+        CleanResult:
+          description: True if the scan contained no threats, false otherwise
+          type: boolean
+        WebsiteThreatType:
+          description: Type of threat returned; can be None, Malware, ForcedDownload or Phishing
+          enum:
+          - None
+          - Malware
+          - Phishing
+          - ForcedDownload
+          - UnableToConnect
+          type: string
+        FoundViruses:
+          description: Array of viruses found, if any
+          type: array
+          items:
+            $ref: '#/components/schemas/VirusFound'
+        WebsiteHttpResponseCode:
+          format: int32
+          description: The remote server URL HTTP reasponse code; useful for debugging issues with scanning; typically if the remote server returns a 200 or 300-series code this means a successful response, while a 400 or 500 series code would represent an error returned from the remote server for the provided URL.
+          type: integer
+    WebsiteScanRequest:
+      description: Request to scan a website for malicious content
+      type: object
+      properties:
+        Url:
+          description: URL of the website to scan; should begin with http:// or https://
+          type: string
   securitySchemes:
     Apikey:
       type: apiKey
